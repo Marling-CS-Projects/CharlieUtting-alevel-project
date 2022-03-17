@@ -2,12 +2,12 @@
 description: Computer Science H446-03
 ---
 
-# Some Generic Project
+# Zombie Survival Game
 
 |                  |                |
 | ---------------- | -------------- |
 | Candidate Name   | Charlie Utting |
-| Candidate Number |                |
+| Candidate Number | 1373           |
 | Centre Name      | Marling School |
 | Centre Number    | 57037          |
 
