@@ -15,3 +15,5 @@ Clement, J. (2021). _Global unit sales of Mario video games 2020_. \[online] Sta
 Clement, J. (2021b). _Minecraft unit sales worldwide 2019_. \[online] Statista. Available at: [https://www.statista.com/statistics/680124/minecraft-unit-sales-worldwide/](https://www.statista.com/statistics/680124/minecraft-unit-sales-worldwide/) \[Accessed 1 Apr. 2022].
 
 Vincent, B. (2020). _‘Minecraft’ Has Surpassed 131 Million Monthly Active Users_. \[online] PCMag UK. Available at: [https://uk.pcmag.com/migrated-84555-gaming/129020/minecraft-has-surpassed-131-million-monthly-active-users](https://uk.pcmag.com/migrated-84555-gaming/129020/minecraft-has-surpassed-131-million-monthly-active-users) \[Accessed 1 Apr. 2022].
+
+Waterson, J. (2021). _Most British adults played computer games during the pandemic, says Ofcom_. \[online] the Guardian. Available at: [https://www.theguardian.com/games/2021/apr/28/62-of-uk-adults-played-computer-games-during-the-pandemic-says-ofcom](https://www.theguardian.com/games/2021/apr/28/62-of-uk-adults-played-computer-games-during-the-pandemic-says-ofcom).
