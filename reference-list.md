@@ -10,10 +10,13 @@ Uttal, D.H., Meadow, N.G., Tipton, E., Hand, L.L., Alden, A.R., Warren, C. and N
 
 Granic, I., Lobel, A. and Rutger C. M. E. Engels (2014). The benefits of playing video games. _American Psychologist_, \[online] 69(1), pp.66–78. Available at: [https://www.apa.org/pubs/journals/releases/amp-a0034857.pdf](https://www.apa.org/pubs/journals/releases/amp-a0034857.pdf).
 
-Clement, J. (2021). _Global unit sales of Mario video games 2020_. \[online] Statista. Available at: [https://www.statista.com/statistics/985770/mario-unit-sales/#:\~:text=Most%20successful%20Mario%20video%20games%20worldwide%202020\&text=Super%20Mario%20Bros.%20is%20the](https://www.statista.com/statistics/985770/mario-unit-sales/#:\~:text=Most%20successful%20Mario%20video%20games%20worldwide%202020\&text=Super%20Mario%20Bros.%20is%20the) \[Accessed 1 Apr. 2022].
+Clement, J. (2021a). _Global unit sales of Mario video games 2020_. \[online] Statista. Available at: [https://www.statista.com/statistics/985770/mario-unit-sales/#:\~:text=Most%20successful%20Mario%20video%20games%20worldwide%202020\&text=Super%20Mario%20Bros.%20is%20the](https://www.statista.com/statistics/985770/mario-unit-sales/#:\~:text=Most%20successful%20Mario%20video%20games%20worldwide%202020\&text=Super%20Mario%20Bros.%20is%20the) \[Accessed 1 Apr. 2022].
 
 Clement, J. (2021b). _Minecraft unit sales worldwide 2019_. \[online] Statista. Available at: [https://www.statista.com/statistics/680124/minecraft-unit-sales-worldwide/](https://www.statista.com/statistics/680124/minecraft-unit-sales-worldwide/) \[Accessed 1 Apr. 2022].
 
 Vincent, B. (2020). _‘Minecraft’ Has Surpassed 131 Million Monthly Active Users_. \[online] PCMag UK. Available at: [https://uk.pcmag.com/migrated-84555-gaming/129020/minecraft-has-surpassed-131-million-monthly-active-users](https://uk.pcmag.com/migrated-84555-gaming/129020/minecraft-has-surpassed-131-million-monthly-active-users) \[Accessed 1 Apr. 2022].
 
 Waterson, J. (2021). _Most British adults played computer games during the pandemic, says Ofcom_. \[online] the Guardian. Available at: [https://www.theguardian.com/games/2021/apr/28/62-of-uk-adults-played-computer-games-during-the-pandemic-says-ofcom](https://www.theguardian.com/games/2021/apr/28/62-of-uk-adults-played-computer-games-during-the-pandemic-says-ofcom).
+
+Clement, J. (2021c). _Terraria global unit sales by platform 2020_. \[online] Statista. Available at: [https://www.statista.com/statistics/1126833/unit-sales-terraria-platform/](https://www.statista.com/statistics/1126833/unit-sales-terraria-platform/) \[Accessed 4 Apr. 2022].
+
