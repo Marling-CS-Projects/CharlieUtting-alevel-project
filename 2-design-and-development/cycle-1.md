@@ -13,16 +13,22 @@ Make phaser work and display something.
 
 ### Key Variables
 
-| Variable Name | Use                   |
-| ------------- | --------------------- |
-| foo           | does something useful |
+| Variable Name | Use                                                                    |
+| ------------- | ---------------------------------------------------------------------- |
+| config        | This object allows you to configure the game including the game window |
+| game          | Local variable which Phaser.Game is assigned to.                       |
 
 ### Pseudocode
 
 ```
-procedure do_something
-    
-end procedure
+define config
+    width = 800,
+    height = 600,
+    scene:
+        preload: preload,
+        create: create,
+        update: update
+define game = new phaser.game(config)
 ```
 
 ## Development
