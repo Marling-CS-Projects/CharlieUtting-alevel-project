@@ -4,10 +4,10 @@
 
 ### Objectives
 
-Make phaser work and display something.
+Make Phaser work and display something.
 
-* [ ] Make phaser run.
-* [ ] Make it display something.
+* [x] Make Phaser run.
+* [x] Make it display a background.
 
 ### Usability Features
 
