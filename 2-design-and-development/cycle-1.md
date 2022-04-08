@@ -9,7 +9,9 @@ Make Phaser work and display something.
 * [x] Make Phaser run.
 * [x] Make it display a background.
 * [x] Make platforms.
-* [ ] Make physics.
+* [x] Make physics.
+* [x] Add player.
+* [x] Make player collide with platforms.
 
 ### Usability Features
 
@@ -19,6 +21,8 @@ Make Phaser work and display something.
 | ------------- | ---------------------------------------------------------------------- |
 | config        | This object allows you to configure the game including the game window |
 | game          | Local variable which Phaser.Game is assigned to.                       |
+| player        | Object for the playable character.                                     |
+| platform      | Game object for the platforms that the player will bounce on.          |
 
 ### Pseudocode
 
@@ -65,13 +69,18 @@ Evidence for testing
 
 ### Tests
 
-| Test | Instructions         | What I expect                                        | What actually happens | Pass/Fail |
-| ---- | -------------------- | ---------------------------------------------------- | --------------------- | --------- |
-| 1    | Run Server           | When I go to the local host it displays my web-page. | As expected           | Pass      |
-| 2    | Display a background | When the code is run It displays a sky background.   | As expected           | Pass      |
-| 3    | Make Platforms       | Have platforms that use the ground png.              | As expected           | Pass      |
-| 4    | Make Physics         | Have arcade physics for the platformer.              |                       |           |
+| Test | Instructions         | What I expect                                                              | What actually happens | Pass/Fail |
+| ---- | -------------------- | -------------------------------------------------------------------------- | --------------------- | --------- |
+| 1    | Run Server           | When I go to the local host it displays my web-page.                       | As expected           | Pass      |
+| 2    | Display a background | When the code is run It displays a sky background.                         | As expected           | Pass      |
+| 3    | Make Platforms       | Have platforms that use the ground png.                                    | As expected           | Pass      |
+| 4    | Make Physics         | Have arcade physics for the platformer.                                    | As expected           | Pass      |
+| 5    | Add player           | Make a sprite using the guy sprite sheet that will eventually be playable. | As expected           | Pass      |
 
 ### Evidence
 
-![Picture of website](../.gitbook/assets/2022-04-08-174251\_1920x1080\_scrot.png)
+![Picture of server running and background.](<../.gitbook/assets/2022-04-08-174251\_1920x1080\_scrot (1).png>)
+
+![Platforms that the player will jump on.](../.gitbook/assets/image.png)
+
+![Player that has fallen to the ground due to the physics and has collided with the platforms.](<../.gitbook/assets/image (2).png>)
