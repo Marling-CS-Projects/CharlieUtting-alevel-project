@@ -6,8 +6,8 @@
 
 Make phaser work and display something.
 
-* [x] Make phaser run.
-* [x] Make it display something.
+* [ ] Make phaser run.
+* [ ] Make it display something.
 
 ### Usability Features
 
@@ -29,6 +29,15 @@ define config
         create: create,
         update: update
 define game = new phaser.game(config)
+function preload
+    load image sky, star.png
+    load image ground, ground.png
+    load image star, star.png
+    load image bomb, bomb.png
+    load spritesheet dude, dude.png
+function create
+    add image(width: 400, height: 300, sky)
+    add image(width: 400, height: 300, star)
 ```
 
 ## Development
