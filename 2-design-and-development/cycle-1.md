@@ -54,9 +54,11 @@ Evidence for testing
 
 ### Tests
 
-| Test | Instructions  | What I expect     | What actually happens | Pass/Fail |
-| ---- | ------------- | ----------------- | --------------------- | --------- |
-| 1    | Run code      | Thing happens     | As expected           | Pass      |
-| 2    | Press buttons | Something happens | As expected           | Pass      |
+| Test | Instructions         | What I expect                                        | What actually happens | Pass/Fail |
+| ---- | -------------------- | ---------------------------------------------------- | --------------------- | --------- |
+| 1    | Run Server           | When I go to the local host it displays my web-page. | As expected           | Pass      |
+| 2    | Display a background | When the code is run It displays a sky background.   | As expected           | Pass      |
 
 ### Evidence
+
+![Picture of website](../.gitbook/assets/2022-04-08-174251\_1920x1080\_scrot.png)
