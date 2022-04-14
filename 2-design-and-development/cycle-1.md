@@ -12,7 +12,7 @@ Make Phaser work and display something.
 * [x] Make physics.
 * [x] Add player.
 * [x] Make player collide with platforms.
-* [ ] Add keyboard controls.
+* [x] Add keyboard controls.
 * [ ] Add star collectibles.
 * [ ] Add scores.
 * [ ] Add bombs.
