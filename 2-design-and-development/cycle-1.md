@@ -13,7 +13,7 @@ Make Phaser work and display something.
 * [x] Add player.
 * [x] Make player collide with platforms.
 * [x] Add keyboard controls.
-* [ ] Add star collectibles.
+* [x] Add star collectibles.
 * [ ] Add scores.
 * [ ] Add bombs.
 
@@ -80,6 +80,7 @@ function create
         frames: dude(5, 6, 7, 8)
         repeat = -1
         framerate:10
+    
 function update
     if(left_arrow_down = true)
         player_velocity_x = -160
