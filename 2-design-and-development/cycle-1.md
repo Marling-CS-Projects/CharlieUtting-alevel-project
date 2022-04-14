@@ -12,6 +12,7 @@ Make Phaser work and display something.
 * [x] Make physics.
 * [x] Add player.
 * [x] Make player collide with platforms.
+* [x] Add keyboard controls.
 
 ### Usability Features
 
@@ -29,30 +30,53 @@ Make Phaser work and display something.
 ```
 define config
     width = 800,
-    height = 600,
+    height = 600, //Defines the window size
     physics
         arcade
-            gravity = 300
+            gravity = 300 // Sets gravity with arcade type to 300.
     scene:
         preload: preload,
         create: create,
         update: update
-define game = new phaser.game(config)
+define game = new phaser.game(config) //Defines the game.
 function preload
     load image sky, star.png
     load image ground, ground.png
     load image star, star.png
     load image bomb, bomb.png
-    load spritesheet dude, dude.png
+    load spritesheet dude, dude.png //Loads the sprites and other game objects.
+
+define player
+define platforms
+
 function create
-    add image(width: 400, height: 300, sky)
+    add image(width: 400, height: 300, sky) //Adds a platform for the floor.
     
     platforms = this.physics
     
     add image(width: 400,height: 568, ground)
     add image(width: 600,height: 400, ground)
     add image(width: 50,height: 250, ground)
-    add image(width: 750,height: 220, ground)
+    add image(width: 750,height: 220, ground) //Adds 4 more platforms.
+    
+    player = physics.add.sprite(100, 450, dude) //Defines player.
+    player collide with world bounds = true
+    player bounce(0.2)
+    
+    animation()
+        key:left
+        frames: dude(0,1, 2, 3) //Uses frames 0, 1 , 2, and 3.
+        repeat = -1 //Tells the animation to loop.
+        framerate: 10
+    animation()
+        key:turn
+        frames: dude(4)
+        framerate:10
+    animation()
+        key: right
+        frames: dude(5, 6, 7, 8)
+        repeat = -1
+        framerate:10
 ```
 
 ## Development
