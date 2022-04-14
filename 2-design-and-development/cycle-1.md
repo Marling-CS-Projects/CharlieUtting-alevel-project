@@ -80,6 +80,22 @@ function create
         frames: dude(5, 6, 7, 8)
         repeat = -1
         framerate:10
+function update
+    if(left_arrow_down = true)
+        player_velocity_x = -160
+        
+        play_anim(left)
+    else if(right_arrow_down = true)
+        player_velocity_x = 160
+        
+        play_anim(right)
+    else
+        player_velocity = 0
+        
+        play_anim(turn)
+    
+    if(up_arrow_down = true + on_ground = true)
+        player_velocity_y = -330
 ```
 
 ## Development
