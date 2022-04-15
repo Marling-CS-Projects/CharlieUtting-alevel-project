@@ -14,7 +14,7 @@ Make Phaser work and display something.
 * [x] Make player collide with platforms.
 * [x] Add keyboard controls.
 * [x] Add star collectibles.
-* [ ] Add scores.
+* [x] Add scores.
 * [ ] Add bombs.
 
 ### Usability Features
@@ -27,6 +27,8 @@ Make Phaser work and display something.
 | game          | Local variable which Phaser.Game is assigned to.                       |
 | player        | Object for the playable character.                                     |
 | platform      | Game object for the platforms that the player will bounce on.          |
+| score         | Variable to hold the amount the player has scored whilst playing.      |
+| scoreText     | Used to display the score text at the top left of the screen.          |
 
 ### Pseudocode
 
@@ -51,6 +53,8 @@ function preload
 
 define player
 define platforms
+define score
+define scoreText
 
 function create
     add image(width: 400, height: 300, sky) //Adds a platform for the floor.
