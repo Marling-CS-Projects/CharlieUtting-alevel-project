@@ -129,6 +129,6 @@ Evidence for testing
 
 ![Picture of server running and background.](<../.gitbook/assets/2022-04-08-174251\_1920x1080\_scrot (1).png>)
 
-![Platforms that the player will jump on.](../.gitbook/assets/image.png)
+![Platforms that the player will jump on.](<../.gitbook/assets/image (1).png>)
 
 ![Player that has fallen to the ground due to the physics and has collided with the platforms.](<../.gitbook/assets/image (2) (1).png>)
