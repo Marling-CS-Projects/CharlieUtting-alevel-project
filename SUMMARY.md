@@ -35,3 +35,4 @@
 * [Reference List - Stakeholders](reference-list-stakeholders.md)
 * [Reference List - Features of Proposed Solution.](reference-list-features-of-proposed-solution..md)
 * [Notes](notes.md)
+* [Hardware and Software Requirements References](hardware-and-software-requirements-references.md)
