@@ -1,32 +1,38 @@
 {
-  "name": "phaser3-typescript-webpack",
-  "version": "1.0.0",
-  "description": "",
-  "author": "troyedwardsjr",
-  "main": "index.js",
+  "name": "phaser3-project-template",
+  "version": "1.1.2",
+  "description": "A Phaser 3 Project Template",
+  "main": "src/index.js",
   "scripts": {
-    "start": "webpack",
-    "dev": "webpack",
-    "deploy": "webpack --config webpack.production.config.js"
+    "build": "webpack --config webpack/prod.js ",
+    "start": "webpack-dev-server --config webpack/base.js --open"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/photonstorm/phaser3-project-template.git"
+  },
+  "author": "Richard Davey <rdavey@gmail.com> (http://www.photonstorm.com)",
   "license": "MIT",
+  "licenseUrl": "http://www.opensource.org/licenses/mit-license.php",
+  "bugs": {
+    "url": "https://github.com/photonstorm/phaser3-project-template/issues"
+  },
+  "homepage": "https://github.com/photonstorm/phaser3-project-template#readme",
   "devDependencies": {
-    "@babel/core": "^7.0.0-rc.2",
-    "@babel/plugin-proposal-class-properties": "^7.0.0-rc.2",
-    "@babel/polyfill": "^7.0.0-rc.2",
-    "@babel/preset-env": "^7.0.0-rc.2",
-    "@babel/preset-typescript": "^7.0.0-rc.2",
-    "awesome-typescript-loader": "^3.4.1",
-    "babel-loader": "8.0.0-beta.2",
-    "browser-sync": "^2.18.13",
-    "browser-sync-webpack-plugin": "^1.2.0",
-    "html-webpack-plugin": "^2.30.1",
-    "raw-loader": "^0.5.1",
-    "typescript": "^2.7.2",
-    "webpack": "3.11.0"
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "raw-loader": "^3.1.0",
+    "terser-webpack-plugin": "^2.2.1",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0",
+    "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "phaser": "3.11.0",
-    "prettier": "^2.7.1"
+    "phaser": "^3.50.0"
   }
 }
