@@ -2,8 +2,10 @@ import Phaser from 'phaser'
 import personImg from './assets/person.png'
 import tilesetImg from './assets/mytileset.png'
 import tilemap from './assets/Zombie.json'
+import { Mrpas } from 'mrpas'
 let player;
 let cursors;
+let target = 0;
 
 const config = {
     type: Phaser.AUTO,
@@ -59,10 +61,17 @@ function create ()
     this.cameras.main.startFollow(player, false);
 
     player.body.collideWorldBounds = true;
+
+    this.input.on('pointermove', function(pointer) {
+        target = Phaser.Math.Angle.BetweenPoints(player, pointer);
+    });
+
+
 }
 
 function update ()
 {
+    player.rotation = target;
     if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
