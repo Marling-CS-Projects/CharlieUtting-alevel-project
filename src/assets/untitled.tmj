@@ -1,0 +1,57 @@
+{ "compressionlevel":-1,
+ "height":4,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[2, 3, 4, 10,
+            6, 7, 8, 1,
+            0, 0, 0, 0,
+            0, 0, 0, 0],
+         "height":4,
+         "id":1,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":4,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":2,
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.8.6",
+ "tileheight":32,
+ "tilesets":[
+        {
+         "columns":1,
+         "firstgid":1,
+         "image":"bush.png",
+         "imageheight":32,
+         "imagewidth":32,
+         "margin":0,
+         "name":"bush",
+         "spacing":0,
+         "tilecount":1,
+         "tileheight":32,
+         "tilewidth":32
+        }, 
+        {
+         "columns":4,
+         "firstgid":2,
+         "image":"mytileset.png",
+         "imageheight":128,
+         "imagewidth":128,
+         "margin":0,
+         "name":"mytileset",
+         "spacing":0,
+         "tilecount":16,
+         "tileheight":32,
+         "tilewidth":32
+        }],
+ "tilewidth":32,
+ "type":"map",
+ "version":"1.8",
+ "width":4
+}

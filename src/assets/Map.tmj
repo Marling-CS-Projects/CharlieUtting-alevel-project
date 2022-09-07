@@ -3,8 +3,7 @@
     {
      "export":
         {
-         "format":"json",
-         "target":"Map.json"
+         "format":"json"
         }
     },
  "height":48,

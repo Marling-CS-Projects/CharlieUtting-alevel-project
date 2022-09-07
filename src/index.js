@@ -1,7 +1,7 @@
 import Phaser from 'phaser'
 import personImg from './assets/person.png'
 import tilesetImg from './assets/mytileset.png'
-import tilemap from './assets/Map.json'
+import tilemap from './assets/Zombie.json'
 let player;
 let cursors;
 
@@ -31,7 +31,6 @@ function preload ()
     this.load.image("tileset", tilesetImg);
     this.load.tilemapTiledJSON("map", tilemap);
     this.load.image('person', personImg);
-
 }
 
 function create ()
@@ -39,10 +38,10 @@ function create ()
 
     const map = this.make.tilemap({key: "map"});
 
-    const tileset = map.addTilesetImage("mytileset", "tileset");
+    const tileset = map.addTilesetImage('mytileset', 'tileset');
 
     const belowLayer = map.createLayer("Lower", tileset, 0, 0);
-    const worldLayer = map.createLayer("World", tileset, 0,0)
+    const worldLayer = map.createLayer("World", tileset, 0,0);
 
     player = this.physics.add.sprite(100,100,'person')
 
@@ -51,13 +50,15 @@ function create ()
 
 
     worldLayer.setCollisionByProperty({ collides: true });
+    //objectLayer.setCollisionByProperty({collides:true});
 
-    this.physics.add.collider(worldLayer,player)
+    this.physics.add.collider(worldLayer,player);
+    //this.physics.add.collider(objectLayer,player);
 
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(player, false);
 
-
+    player.body.collideWorldBounds = true;
 }
 
 function update ()
