@@ -2,7 +2,9 @@
 
 ## Systems Diagram
 
-![](<../.gitbook/assets/System Diagram.jpg>)
+&#x20;
+
+<figure><img src="../.gitbook/assets/Untitled (1) (1).jpg" alt=""><figcaption></figcaption></figure>
 
 This diagram shows the different parts of the game that I will focus on creating. I have split each section into smaller sub-sections. Throughout the development stage, I will pick one or two of these sections to focus on at a time to gradually build up and piece together the game. I have broken the project down this way as it roughly corresponds to the success criteria.
 
@@ -12,31 +14,32 @@ Usability is an important aspect to my game as I want it to be accessible to all
 
 ### Effective
 
-Users can achieve the goal with completeness and accuracy. To do this, I will make it easy for the players to realise that they need to reach a goal in order to complete a level. I will make this goal clear to see so there is no confusion over where the players need to go.
+For my game to be affective the game needs to be simple but with some level of difficulty. This will mean that collecting items and upgrading will have to be very simple. It will also have to a simple combat system which will just consist of shooting at the enemies and if the enemies collide with you then they will take away your health.
 
 #### Aims
 
-* Create a clear goal to reach to determine the end of a level
-* Create a clear goal for any multiplayer modes
+* You are able to upgrade your weapon.
+* The materials you collect stand out.
+* The UI showing how much of a material you have and how much you need to upgrade will be has to be displayed clearly.
 
 ### Efficiency
 
-The speed and accuracy to which a user can complete the goal. To do this, I will create a menu system which is easy to navigate through in order for to find what you are looking for. The information which is more important can be found with less clicks.
+The speed and accuracy to which a user can complete the goal. To do this I will both have an easy menu to save a game and to load a game and I will need an intuitive control system so that the game is easy to pick up and understand what your objectives are.
 
 #### Aims
 
 * Create a menu system that is quick and easy to navigate through
-* Create a controls system that isn't too complicated but allows the player to do multiple actions
+* Create a controls system that isn't too complicated but allows the player to do multiple actions.
+* Have a clear explanation of the aim at the beginning of the game.
 
 ### Engaging
 
-The solution is engaging for the user to use. To do this, I will create 5 levels and an online multiplayer mode to keep the players engaged and allow them to have fun while playing the game. Using vector style art will also make the game nicer to look at than blocks, so will draw more people in, keeping them engaged.
+The solution is engaging for the user to use. To do this the game will primarily be difficult so the player will have more determination to finish it and it will have five roads that will act as levels and will have a clear difficultly increase. The game will also be more engaging if it has a darker theme as this will increase the fear and adrenaline of the person playing.
 
 #### Aims
 
-* Create a series of levels to work through
-* Create a multiplayer mode to play
-* Incorporate a style of game art the suits the game
+* Create a series of roads that will act as levels to work through
+* Incorporate a style of game art the suits the theme of the game
 
 ### Error Tolerant
 
