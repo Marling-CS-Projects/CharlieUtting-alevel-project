@@ -6,6 +6,8 @@ import { Mrpas } from 'mrpas'
 let player;
 let cursors;
 let target = 0;
+let fov;
+let belowLayer
 
 const config = {
     type: Phaser.AUTO,
@@ -42,7 +44,7 @@ function create ()
 
     const tileset = map.addTilesetImage('mytileset', 'tileset');
 
-    const belowLayer = map.createLayer("Lower", tileset, 0, 0);
+    belowLayer = map.createLayer("Lower", tileset, 0, 0);
     const worldLayer = map.createLayer("World", tileset, 0,0);
 
     player = this.physics.add.sprite(100,100,'person')
@@ -66,7 +68,10 @@ function create ()
         target = Phaser.Math.Angle.BetweenPoints(player, pointer);
     });
 
-
+    // this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
+    //     const tile = this.belowLayer.getTileAt(x, y)
+    //     return tile && !tile.collides
+    // })
 }
 
 function update ()
