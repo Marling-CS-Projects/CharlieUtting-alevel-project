@@ -130,4 +130,4 @@ Evidence for testing
 
 ![Platforms that the player will jump on.](<../.gitbook/assets/image (1) (1).png>)
 
-![Player that has fallen to the ground due to the physics and has collided with the platforms.](<../.gitbook/assets/image (2) (1).png>)
+![Player that has fallen to the ground due to the physics and has collided with the platforms.](<../.gitbook/assets/image (2) (1) (1).png>)
