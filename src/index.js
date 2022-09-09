@@ -2,12 +2,15 @@ import Phaser from 'phaser'
 import personImg from './assets/person.png'
 import tilesetImg from './assets/mytileset.png'
 import tilemap from './assets/Zombie.json'
-import { Mrpas } from 'mrpas'
+import ironImg from './assets/iron.png'
 let player;
 let cursors;
 let target = 0;
-let fov;
 let belowLayer
+let iron;
+let ironLayer;
+let ironCount = 0;
+let text;
 
 const config = {
     type: Phaser.AUTO,
@@ -17,7 +20,7 @@ const config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: false
+            debug: true
         }
     },
     scene: {
@@ -35,6 +38,7 @@ function preload ()
     this.load.image("tileset", tilesetImg);
     this.load.tilemapTiledJSON("map", tilemap);
     this.load.image('person', personImg);
+    this.load.image('iron', ironImg);
 }
 
 function create ()
@@ -47,31 +51,57 @@ function create ()
     belowLayer = map.createLayer("Lower", tileset, 0, 0);
     const worldLayer = map.createLayer("World", tileset, 0,0);
 
+
+
+
     player = this.physics.add.sprite(100,100,'person')
 
 
     cursors = this.input.keyboard.createCursorKeys();
 
+    ironLayer = map.getObjectLayer('Iron')['objects'];
+    iron = this.physics.add.staticGroup()
+
+    ironLayer.forEach(object => {
+        let obj = iron.create(object.x, object.y, "iron");
+        obj.setScale(object.width/32, object.height/32);
+        obj.setOrigin(0,1);
+        obj.body.width = object.width/2;
+        obj.body.height = object.height/2;
+        obj.body.setOffset(23,-6);
+    });
+
+    text = this.add.text(570, 70, `Iron: ${ironCount}`, {
+        fontSize: '20px',
+        fill: '#ffffff'
+    });
+    text.setScrollFactor(0);
+
+    this.physics.add.collider(player, iron, collectIron, null, this)
+
 
     worldLayer.setCollisionByProperty({ collides: true });
-    //objectLayer.setCollisionByProperty({collides:true});
 
     this.physics.add.collider(worldLayer,player);
-    //this.physics.add.collider(objectLayer,player);
+
+    this.physics.world.setBounds( 0, 0, map.widthInPixels, map.heightInPixels );
+    player.body.collideWorldBounds = true;
 
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(player, false);
-
-    player.body.collideWorldBounds = true;
 
     this.input.on('pointermove', function(pointer) {
         target = Phaser.Math.Angle.BetweenPoints(player, pointer);
     });
 
-    // this.fov = new Mrpas(this.map.width, this.map.height, (x, y) => {
-    //     const tile = this.belowLayer.getTileAt(x, y)
-    //     return tile && !tile.collides
-    // })
+
+}
+
+function collectIron(player, iron){
+    iron.destroy(iron.x, iron.y);
+    ironCount++
+    text.setText(`Iron: ${ironCount}`);
+    return false;
 }
 
 function update ()
