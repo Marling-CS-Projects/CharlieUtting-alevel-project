@@ -3,6 +3,12 @@ import personImg from './assets/person.png'
 import tilesetImg from './assets/mytileset.png'
 import tilemap from './assets/Zombie.json'
 import ironImg from './assets/iron.png'
+import sightImg from './assets/sight.png'
+
+let ironGoal = 6;
+const ironGoals = [6,12,15,16,25];
+let i = 0;
+let damage = 5;
 let player;
 let cursors;
 let target = 0;
@@ -11,6 +17,10 @@ let iron;
 let ironLayer;
 let ironCount = 0;
 let text;
+let sight;
+let angle = 90;
+let targetVec = 0;
+let input;
 
 const config = {
     type: Phaser.AUTO,
@@ -39,10 +49,12 @@ function preload ()
     this.load.tilemapTiledJSON("map", tilemap);
     this.load.image('person', personImg);
     this.load.image('iron', ironImg);
+    this.load.image('sight', sightImg)
 }
 
 function create ()
 {
+    input=this.input;
 
     const map = this.make.tilemap({key: "map"});
 
@@ -52,10 +64,7 @@ function create ()
     const worldLayer = map.createLayer("World", tileset, 0,0);
 
 
-
-
-    player = this.physics.add.sprite(100,100,'person')
-
+    player = this.physics.add.sprite(200,200,'person')
 
     cursors = this.input.keyboard.createCursorKeys();
 
@@ -71,14 +80,13 @@ function create ()
         obj.body.setOffset(23,-6);
     });
 
-    text = this.add.text(570, 70, `Iron: ${ironCount}`, {
+    text = this.add.text(570, 70, `Iron: ${ironCount}/ ${ironGoal}`, {
         fontSize: '20px',
         fill: '#ffffff'
     });
     text.setScrollFactor(0);
 
     this.physics.add.collider(player, iron, collectIron, null, this)
-
 
     worldLayer.setCollisionByProperty({ collides: true });
 
@@ -89,24 +97,27 @@ function create ()
 
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(player, false);
-
-    this.input.on('pointermove', function(pointer) {
-        target = Phaser.Math.Angle.BetweenPoints(player, pointer);
-    });
-
-
 }
 
 function collectIron(player, iron){
     iron.destroy(iron.x, iron.y);
     ironCount++
-    text.setText(`Iron: ${ironCount}`);
+    if(ironCount == ironGoal){
+        i++
+        ironCount = 0;
+        ironGoal = ironGoals[i];
+        damage= damage*2;
+    }
+    text.setText(`Iron: ${ironCount}/ ${ironGoal}`);
+
     return false;
 }
 
 function update ()
 {
-    player.rotation = target;
+    angle = Phaser.Math.Angle.Between(player.x,player.y, this.input.mousePointer.worldX, this.input.mousePointer.worldY)
+
+    player.rotation = angle;
     if (cursors.left.isDown)
     {
         player.setVelocityX(-160);
@@ -121,6 +132,12 @@ function update ()
     }
     else if (cursors.down.isDown) {
         player.setVelocityY(160)
+    }
+    else if(input.isDown)
+    {
+        sight = this.physics.add.sprite(384,256,'cannonBall');
+
+        this.physics.moveTo(sight,input.x,input.y,500);
     }
     else
     {
