@@ -1054,6 +1054,12 @@
                  "height":18,
                  "id":152,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1066,6 +1072,12 @@
                  "height":18,
                  "id":153,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1078,6 +1090,12 @@
                  "height":18,
                  "id":154,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1090,6 +1108,12 @@
                  "height":18,
                  "id":155,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1102,6 +1126,12 @@
                  "height":18,
                  "id":156,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1114,6 +1144,12 @@
                  "height":18,
                  "id":157,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1126,6 +1162,12 @@
                  "height":18,
                  "id":158,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1138,6 +1180,12 @@
                  "height":18,
                  "id":159,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1150,6 +1198,12 @@
                  "height":18,
                  "id":160,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1162,6 +1216,12 @@
                  "height":18,
                  "id":161,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1174,6 +1234,12 @@
                  "height":18,
                  "id":162,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1186,6 +1252,12 @@
                  "height":18,
                  "id":163,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1198,6 +1270,12 @@
                  "height":18,
                  "id":164,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1210,6 +1288,12 @@
                  "height":18,
                  "id":165,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1222,6 +1306,12 @@
                  "height":18,
                  "id":166,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1234,6 +1324,12 @@
                  "height":18,
                  "id":167,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1246,6 +1342,12 @@
                  "height":18,
                  "id":168,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1258,6 +1360,12 @@
                  "height":18,
                  "id":169,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1270,6 +1378,12 @@
                  "height":18,
                  "id":171,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1282,6 +1396,12 @@
                  "height":18,
                  "id":172,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1294,6 +1414,12 @@
                  "height":18,
                  "id":173,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1306,6 +1432,12 @@
                  "height":18,
                  "id":174,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1318,6 +1450,12 @@
                  "height":18,
                  "id":175,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1330,6 +1468,12 @@
                  "height":18,
                  "id":176,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1342,6 +1486,12 @@
                  "height":18,
                  "id":178,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1354,6 +1504,12 @@
                  "height":18,
                  "id":179,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1366,6 +1522,12 @@
                  "height":18,
                  "id":180,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1378,6 +1540,12 @@
                  "height":18,
                  "id":204,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1390,6 +1558,12 @@
                  "height":18,
                  "id":205,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,
@@ -1402,6 +1576,12 @@
                  "height":18,
                  "id":206,
                  "name":"",
+                 "properties":[
+                        {
+                         "name":"cooldown",
+                         "type":"bool",
+                         "value":true
+                        }],
                  "rotation":0,
                  "type":"zombie",
                  "visible":true,

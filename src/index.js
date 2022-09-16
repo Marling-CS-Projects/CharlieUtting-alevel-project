@@ -5,6 +5,7 @@ import tilemap from './assets/Zombie.json'
 import ironImg from './assets/iron.png'
 import sightImg from './assets/sight.png'
 import zomImg from './assets/zombie.png'
+import bulImg from './assets/bullet.png'
 
 let ironGoal = 6;
 const ironGoals = [6,12,15,16,25];
@@ -28,17 +29,19 @@ let coords;
 let health = 100;
 let zombie;
 let cooldown = false;
+let angle2 = 90
+let obj2;
 
 const config = {
     type: Phaser.AUTO,
-    width: 1000,
-    height: 500,
+    width: 640,
+    height: 480,
 
     physics: {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: false
+            debug: true
         }
     },
     scene: {
@@ -46,9 +49,7 @@ const config = {
         create: create,
         update: update
     },
-    scale: {
-        zoom: 1.5
-    }
+
 };
 
 
@@ -61,8 +62,23 @@ function preload ()
     this.load.image('iron', ironImg);
     this.load.image('sight', sightImg)
     this.load.image('zombieImg', zomImg)
+    this.load.image('bulletImg', bulImg)
 }
 
+class Zombie extends Phaser.GameObjects.Sprite {
+
+    constructor (scene, x, y)
+    {
+        super(scene, x, y, 'zombieImg');
+        this.scene.add.existing(this);
+
+    }
+
+    preUpdate (time, delta)
+    {
+        super.preUpdate(time, delta);
+    }
+}
 
 function create ()
 {
@@ -77,7 +93,6 @@ function create ()
 
     belowLayer = map.createLayer("Lower", tileset, 0, 0);
     worldLayer = map.createLayer("World", tileset, 0,0);
-
 
     // player = this.physics.add.sprite(1608,1080,'person')
     player = this.physics.add.sprite(100,200,'person')
@@ -97,7 +112,7 @@ function create ()
         obj.body.setOffset(23,-6);
     });
 
-    text = this.add.text(570, 70, `Iron: ${ironCount}/ ${ironGoal} Health:${health}`, {
+    text = this.add.text(500, 40, `Iron: ${ironCount}/ ${ironGoal}`, {
         fontSize: '20px',
         fill: '#ffffff'
     });
@@ -108,18 +123,21 @@ function create ()
     })
     coords.setScrollFactor(0)
 
+    // let zomboid = this.physics.add.existing( new Zombie(this, 100, 100))
+
     const zombieLayer = map.getObjectLayer('Zombie')
 
     zombie = this.physics.add.group()
 
     zombieLayer.objects.forEach(zomObj => {
-        let obj = zombie.create(zomObj.x,zomObj.y,'zombieImg')
+        // let obj = this.physics.add.existing(new Zombie(this, zomObj.x, zomObj.y));
+        let obj = zombie.create(zomObj.x, zomObj.y, "zombieImg")
         obj.setScale(zomObj.width/16, zomObj.height/16);
         obj.setOrigin(0,1);
         obj.body.width = zomObj.width/2;
         obj.body.height = zomObj.height/2;
-    })
 
+    })
 
     this.physics.add.collider(player, iron, collectIron, null, this)
 
@@ -131,6 +149,7 @@ function create ()
 
     this.physics.world.setBounds( 0, 0, map.widthInPixels, map.heightInPixels );
     player.body.collideWorldBounds = true;
+    zombie.body.collideWorldbounds = true;
 
     this.physics.add.collider(zombie,zombie)
 
@@ -146,7 +165,7 @@ function collectIron(player, iron){
     iron.destroy(iron.x, iron.y);
     ironCount++
     if(ironCount == ironGoal){
-        i = i++
+        i++
         ironCount = 0;
         ironGoal = ironGoals[i];
         damage= damage*2;
@@ -166,8 +185,10 @@ function takeDamage(){
     if(cooldown == false) {
         health = health - damage;
         console.log(health)
-        text.setText(`Health: ${health}`)
-    }else{
+        cooldown = true;
+        this.time.delayedCall(500, function damageDelay(){
+                cooldown = false;
+            })
     }
 }
 
@@ -189,7 +210,6 @@ function update ()
     else if (cursors.right.isDown)
     {
         player.setVelocityX(160);
-
     }
     else if (cursors.up.isDown) {
         player.setVelocityY(-160)
@@ -203,12 +223,16 @@ function update ()
         player.setVelocityY(0);
 
     }
-    coords.setText(`X: ${player.x}Y: ${player.y}`)
+
+    coords.setText(`X: ${Math.round(player.x)} Y: ${Math.round(player.y)}`)
     if(mouse.isDown && control == false)
     {
-        sight = this.physics.add.sprite(player.x,player.y,'sight');
+        sight = this.physics.add.sprite(player.x,player.y,'bulletImg');
 
-        this.physics.moveTo(sight,this.input.mousePointer.worldX,this.input.mousePointer.worldY,500);
+        this.physics.moveTo(sight,this.input.mousePointer.worldX,this.input.mousePointer.worldY,500)
+        sight.rotation = Phaser.Math.Angle.Between(player.x, player.y,this.input.mousePointer.worldX,this.input.mousePointer.worldY)-80
+        this.time.delayedCall(500,destroyBullet)
+
         control = true;
         this.time.delayedCall(delay, bullet);
         this.physics.add.collider(sight, worldLayer, destroyBullet)
