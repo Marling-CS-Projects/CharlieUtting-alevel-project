@@ -29,13 +29,15 @@ let delay = 600;
 let coords;
 let health = 100;
 let zombie;
-let cooldown = false;
 let angle2 = 90
 let obj2;
 let gameover;
 let zomboid
-let zombieLayer
 let zombies;
+let text2;
+let defaultScene = null;
+let cooldown = false;
+
 
 const config = {
     type: Phaser.AUTO,
@@ -63,6 +65,8 @@ const config = {
 const game = new Phaser.Game(config);
 function preload ()
 {
+    defaultScene = this;
+
     this.load.image("tileset", tilesetImg);
     this.load.tilemapTiledJSON("map", tilemap);
     this.load.image('person', personImg);
@@ -76,35 +80,26 @@ function preload ()
 class Zombie extends Phaser.GameObjects.Sprite {
 
     health;
+    cooldown = false;
 
-    constructor (scene, x, y, texture)
+    constructor (scene, x, y, texture, player)
     {
         super(scene, x, y, texture);
         this.scene.add.existing(this);
 
     }
 
-    setTarget(target)
-    {
-        this.target = target
-    }
+
 
     preUpdate (time, delta)
     {
         super.preUpdate(time, delta);
-        if (!this.target)
-        {
-            return
-        }
 
-        const tx = this.target.x
-        const ty = this.target.y
-
-        const x = this.x
-        const y = this.y
-
-        const rotation = Phaser.Math.Angle.Between(x, y, tx, ty)
-        this.setRotation(rotation)
+    }
+    Damage(){
+        this.time.delayedCall(100,function write(){
+            console.log('please')
+        })
     }
 }
 
@@ -119,8 +114,7 @@ function create () {
     belowLayer = map.createLayer("Lower", tileset, 0, 0);
     worldLayer = map.createLayer("World", tileset, 0, 0);
 
-    // player = this.physics.add.sprite(1608,1080,'person')
-    player = this.physics.add.sprite(100, 200, 'person')
+    player = this.physics.add.sprite(1608,1080,'person')
 
 
     cursors = this.input.keyboard.createCursorKeys();
@@ -137,36 +131,26 @@ function create () {
         obj.body.setOffset(23, -6);
     });
 
-    text = this.add.text(500, 40, `Iron: ${ironCount}/ ${ironGoal}`, {
+    text = this.add.text(500, 20, `Iron: ${ironCount}/ ${ironGoal}`, {
         fontSize: '20px',
         fill: '#ffffff'
     });
     text.setScrollFactor(0);
-    coords = this.add.text(50, 50, `X: ${player.x}Y: ${player.y}`, {
+    coords = this.add.text(20, 40, `X: ${player.x}Y: ${player.y}`, {
         fontSize: `20px`,
         fill: `#ffffff`
     })
     coords.setScrollFactor(0)
 
-    // zombieLayer = map.getObjectLayer('Zombie')
-    //
-    // zombie = this.physics.add.group()
-    //
-    // zombieLayer.objects.forEach(zomObj => {
-    //     let obj = zombie.create(zomObj.x, zomObj.y, "zombieImg")
-    //     obj.setScale(zomObj.width / 16, zomObj.height / 16);
-    //     obj.setOrigin(0, 1);
-    //     obj.body.width = zomObj.width / 2;
-    //     obj.body.height = zomObj.height / 2;
-    //
-    //     function update() {
-    //         this.physics.moveToObject(zombie, player)
-    //     }
-    // })
+    text2 = this.add.text(20, 20, health, {
+        fontSize: '20px',
+        fill: '#ffffff'
+    });
+    text2.setScrollFactor(0);
+
+
 
     this.physics.add.collider(player, iron, collectIron, null, this)
-
-    // this.physics.add.collider(player, zombie, takeDamage, null, this)
 
     worldLayer.setCollisionByProperty({collides: true});
 
@@ -175,38 +159,26 @@ function create () {
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     player.body.collideWorldBounds = true;
 
-    //this.physics.add.collider(zombie, zombie)
-
-    //this.physics.add.collider(zombie, player, takeDamage)
-
-    //this.physics.add.collider(worldLayer, zombie)
-
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     this.cameras.main.startFollow(player, false);
-    // zomboid = this.physics.add.existing(new Zombie(this, 100, 150))
-    // let xco=300
-    // for(let spawn = 0; spawn<=10; spawn++){
-    //     zomboid = this.physics.add.existing(new Zombie(this,xco,100, player))
-    //     xco= xco+10
-    //     // this.physics.add.collider(zomboid, player)
-    //     // this.physics.moveToObject(zomboid, player, 100)
-    // }
 
     zombies = this.physics.add.group({
         runChildUpdate: true
     })
     let yco = 80
     for (let i = 0; i < 50; i++) {
-        zombie = new Zombie(this, this.game.config.width / 6, yco, 'zombieImg')
+        zombie = new Zombie(this, Phaser.Math.Between(0, 1784), Phaser.Math.Between(0, 1784), 'zombieImg',player)
         zombies.add(zombie)
         yco = yco +40
+        this.physics.add.collider(zombies, player, takeDamage, null, this)
     }
     zombies.children.each(child => {
         child.health=100;
+        child.body.collideWorldBounds = true;
+
     })
     this.physics.add.collider(zombies,zombies)
     this.physics.add.collider(zombies, worldLayer)
-    this.physics.add.collider(zombies,player)
 }
 
 
@@ -222,6 +194,7 @@ function collectIron(player, iron){
     }
     text.setText(`Iron: ${ironCount}/ ${ironGoal}`);
 
+
     return false;
 }
 
@@ -231,14 +204,18 @@ function zomDie(zombie,sight){
     sight.destroy(sight.x, sight.y)
 }
 
-function takeDamage(){
-    if(cooldown == false) {
+function takeDamage() {
+    if (cooldown == false) {
         health = health - damage;
         console.log(health)
         cooldown = true;
-        this.time.delayedCall(500, function damageDelay(){
-                cooldown = false;
+        this.time.delayedCall(100, function hello(){
+            cooldown = false;
         })
+        text2.setText(health)
+    }
+    if (health <= 0){
+        game.destroy()
     }
 }
 
@@ -250,48 +227,36 @@ function destroyBullet(){
 }
 function update ()
 {
+    this.physics.add.collider(Zombie, player)
+
     zombies.children.each(child => {
-        this.physics.moveToObject(child, player)
+        this.physics.moveToObject(child, player, 120)
     })
-    // zombies.children.each(child => {
-    //     this.physics.moveToObject(zombie, player)
-    // })
-    // for(let spawn = 0; spawn < 3; spawn++){
-    //     this.physics.add()
-    // }
-    // this.physics.moveToObject(Zombie, player, 100)
-    angle = Phaser.Math.Angle.Between(player.x,player.y, this.input.mousePointer.worldX, this.input.mousePointer.worldY)
+
+    angle = Phaser.Math.Angle.Between(player.x, player.y, this.input.mousePointer.worldX, this.input.mousePointer.worldY)
     player.rotation = angle;
 
-    // let gameover = this.physics.add.collider(player.x,player.y,'fail')
-    if (cursors.left.isDown)
-    {
+    let gameover = this.physics.add.collider(player.x,player.y,'fail')
+    if (cursors.left.isDown) {
         player.setVelocityX(-160);
-    }
-    else if (cursors.right.isDown)
-    {
+    } else if (cursors.right.isDown) {
         player.setVelocityX(160);
-    }
-    else if (cursors.up.isDown) {
+    } else if (cursors.up.isDown) {
         player.setVelocityY(-160)
-    }
-    else if (cursors.down.isDown) {
+    } else if (cursors.down.isDown) {
         player.setVelocityY(160)
-    }
-    else
-    {
+    } else {
         player.setVelocityX(0);
         player.setVelocityY(0);
 
     }
 
     coords.setText(`X: ${Math.round(player.x)} Y: ${Math.round(player.y)}`)
-    if(mouse.isDown && control == false)
-    {
-        sight = this.physics.add.sprite(player.x,player.y,'bulletImg');
+    if (mouse.isDown && control == false) {
+        sight = this.physics.add.sprite(player.x, player.y, 'bulletImg');
 
-        this.physics.moveTo(sight,this.input.mousePointer.worldX,this.input.mousePointer.worldY,500)
-        sight.rotation = Phaser.Math.Angle.Between(player.x, player.y,this.input.mousePointer.worldX,this.input.mousePointer.worldY)-80
+        this.physics.moveTo(sight, this.input.mousePointer.worldX, this.input.mousePointer.worldY, 500)
+        sight.rotation = Phaser.Math.Angle.Between(player.x, player.y, this.input.mousePointer.worldX, this.input.mousePointer.worldY) - 80
 
 
         control = true;
