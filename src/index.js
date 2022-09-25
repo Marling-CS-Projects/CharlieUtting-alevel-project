@@ -5,14 +5,14 @@ import tilemap from './assets/Zombie.json'
 import ironImg from './assets/iron.png'
 import zomImg from './assets/zombie.png'
 import bulImg from './assets/bullet.png'
-import gameoverImg from './assets/gameover.png'
 import font from './assets/arcade.png'
 import fontxml from './assets/arcade.xml'
 
-let ironGoal = 6;
-const ironGoals = [6,12,15,16,25,0];
+let ironGoal = 8;
+const ironGoals = [8,12,15,16,25,0];
 let i = 0;
 let damage = 20;
+let zomDam = 3
 let player;
 let cursors;
 let belowLayer
@@ -30,6 +30,7 @@ let health = 100;
 let zombie;
 let zombies;
 let text2;
+let boss;
 let gameOver;
 
 const config = {
@@ -41,7 +42,7 @@ const config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: false
+            debug: true
         }
     },
     scene: {
@@ -64,7 +65,6 @@ function preload ()
     this.load.image('iron', ironImg);
     this.load.image('zombieImg', zomImg)
     this.load.image('bulletImg', bulImg)
-    this.load.image('fail', gameoverImg)
     this.load.bitmapFont('arcade', font, fontxml);
 }
 
@@ -95,7 +95,8 @@ function create () {
     belowLayer = map.createLayer("Lower", tileset, 0, 0);
     worldLayer = map.createLayer("World", tileset, 0, 0);
 
-    player = this.physics.add.sprite(1608,1080,'person')
+    // player = this.physics.add.sprite(1608,1080,'person')
+    player = this.physics.add.sprite(140,1506,'person')
 
 
     cursors = this.input.keyboard.createCursorKeys();
@@ -113,7 +114,7 @@ function create () {
     });
 
 
-    text = this.add.bitmapText(500, 20,'arcade', `Iron: ${ironCount}/ ${ironGoal}`,15)
+    text = this.add.bitmapText(390, 20,'arcade', `Iron: ${ironCount} out of ${ironGoal}`,15)
     text.setScrollFactor(0);
 
     coords = this.add.bitmapText(20, 40,'arcade', `X: ${player.x}Y: ${player.y}`,15)
@@ -142,8 +143,24 @@ function create () {
     zombies = this.physics.add.group({
         runChildUpdate: true
     })
-    for (let i = 0; i < 50; i++) {
-        zombie = new Zombie(this, Phaser.Math.Between(0, 1784), Phaser.Math.Between(0, 1784), 'zombieImg')
+    for (let i = 0; i < 5; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(1608, 1786), Phaser.Math.Between(0, 1784), 'zombieImg')
+        zombies.add(zombie)
+    }
+    for (let i = 0; i < 11; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(1320, 1560), Phaser.Math.Between(0, 1784), 'zombieImg')
+        zombies.add(zombie)
+    }
+    for (let i = 0; i < 16; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(968, 1272), Phaser.Math.Between(0, 1784), 'zombieImg')
+        zombies.add(zombie)
+    }
+    for (let i = 0; i < 25; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(424, 888), Phaser.Math.Between(0, 1784), 'zombieImg')
+        zombies.add(zombie)
+    }
+    for (let i = 0; i < 30; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(8, 376), Phaser.Math.Between(0, 1784), 'zombieImg')
         zombies.add(zombie)
     }
     this.physics.add.collider(zombies, player, takeDamage, null, this)
@@ -166,6 +183,15 @@ function collectIron(player, iron){
         damage= damage*2;
         delay = (delay/3)*2
     }
+
+    if(i == 1){
+        boss = new Zombie(this, 32, 1722, 'zombieImg')
+        boss.setScale(4,4)
+        boss.h = 10000
+        this.physics.add.collider(boss, player)
+        zombies.add(boss)
+        zomDam = 20
+    }
     text.setText(`Iron: ${ironCount}/ ${ironGoal}`);
 }
 
@@ -180,7 +206,7 @@ function zomDie(bullet,zombie){
 
 function takeDamage(player, zombie) {
     if (zombie.cooldown == false) {
-        health = health - 3;
+        health = health - zomDam;
         zombie.cooldown = true;
         this.time.delayedCall(200, function cd(){
             zombie.cooldown = false;
@@ -192,7 +218,6 @@ function takeDamage(player, zombie) {
         this.physics.pause()
         gameOver.visible=true
         text2.setText(`Health: 0`)
-
     }
 }
 
