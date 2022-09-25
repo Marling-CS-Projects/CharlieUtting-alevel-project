@@ -3,15 +3,16 @@ import personImg from './assets/person.png'
 import tilesetImg from './assets/mytileset.png'
 import tilemap from './assets/Zombie.json'
 import ironImg from './assets/iron.png'
-import sightImg from './assets/sight.png'
 import zomImg from './assets/zombie.png'
 import bulImg from './assets/bullet.png'
 import gameoverImg from './assets/gameover.png'
+import font from './assets/arcade.png'
+import fontxml from './assets/arcade.xml'
 
 let ironGoal = 6;
-const ironGoals = [6,12,15,16,25];
+const ironGoals = [6,12,15,16,25,0];
 let i = 0;
-let damage = 5;
+let damage = 20;
 let player;
 let cursors;
 let belowLayer
@@ -27,12 +28,9 @@ let delay = 600;
 let coords;
 let health = 100;
 let zombie;
-let gameover;
 let zombies;
 let text2;
-let cooldown = false;
-let zomAngle=0
-
+let gameOver;
 
 const config = {
     type: Phaser.AUTO,
@@ -64,14 +62,15 @@ function preload ()
     this.load.tilemapTiledJSON("map", tilemap);
     this.load.image('person', personImg);
     this.load.image('iron', ironImg);
-    this.load.image('sight', sightImg)
     this.load.image('zombieImg', zomImg)
     this.load.image('bulletImg', bulImg)
-    this.load.image('fail', gameover)
+    this.load.image('fail', gameoverImg)
+    this.load.bitmapFont('arcade', font, fontxml);
 }
 
 class Zombie extends Phaser.GameObjects.Sprite {
-
+    h = 100;
+    cooldown=false;
     constructor (scene, x, y, texture)
     {
         super(scene, x, y, texture);
@@ -113,24 +112,20 @@ function create () {
         obj.body.setOffset(23, -6);
     });
 
-    text = this.add.text(500, 20, `Iron: ${ironCount}/ ${ironGoal}`, {
-        fontSize: '20px',
-        fill: '#ffffff'
-    });
+
+    text = this.add.bitmapText(500, 20,'arcade', `Iron: ${ironCount}/ ${ironGoal}`,15)
     text.setScrollFactor(0);
-    coords = this.add.text(20, 40, `X: ${player.x}Y: ${player.y}`, {
-        fontSize: `20px`,
-        fill: `#ffffff`
-    })
+
+    coords = this.add.bitmapText(20, 40,'arcade', `X: ${player.x}Y: ${player.y}`,15)
     coords.setScrollFactor(0)
 
-    text2 = this.add.text(20, 20, health, {
-        fontSize: '20px',
-        fill: '#ffffff'
-    });
+    text2 = this.add.bitmapText(20, 20, 'arcade', `Health: ${health}`,15)
     text2.setScrollFactor(0);
 
-
+    gameOver = this.add.bitmapText(320, 240, 'arcade', 'Game Over', 50)
+    gameOver.setScrollFactor(0)
+    gameOver.setOrigin(0.5)
+    gameOver.visible=false
 
     this.physics.add.collider(player, iron, collectIron, null, this)
 
@@ -147,17 +142,14 @@ function create () {
     zombies = this.physics.add.group({
         runChildUpdate: true
     })
-    let yco = 80
     for (let i = 0; i < 50; i++) {
         zombie = new Zombie(this, Phaser.Math.Between(0, 1784), Phaser.Math.Between(0, 1784), 'zombieImg')
         zombies.add(zombie)
-        yco = yco +40
-        this.physics.add.collider(zombies, player, takeDamage, null, this)
     }
-    zombies.children.each(child => {
-        child.health=100;
-        child.body.collideWorldBounds = true;
+    this.physics.add.collider(zombies, player, takeDamage, null, this)
 
+    zombies.children.each(child => {
+        child.body.collideWorldBounds = true;
     })
     this.physics.add.collider(zombies,zombies)
     this.physics.add.collider(zombies, worldLayer)
@@ -177,30 +169,35 @@ function collectIron(player, iron){
     text.setText(`Iron: ${ironCount}/ ${ironGoal}`);
 }
 
-function zomDie(zombie,bullet){
-    zombie.destroy(zombie.x, zombie.y)
+function zomDie(bullet,zombie){
+    zombie.h = zombie.h-damage
+    console.log('zombie: ' & zombie.h)
     bullet.destroy(bullet.x, bullet.y)
+    if(zombie.h <= 0){
+        zombie.destroy(zombie.x,zombie.y)
+    }
 }
 
-function takeDamage() {
-    if (cooldown == false) {
-        health = health - damage;
-        console.log(health)
-        cooldown = true;
-        this.time.delayedCall(200, function hello(){
-            cooldown = false;
+function takeDamage(player, zombie) {
+    if (zombie.cooldown == false) {
+        health = health - 3;
+        zombie.cooldown = true;
+        this.time.delayedCall(200, function cd(){
+            zombie.cooldown = false;
         })
-        text2.setText(health)
+        text2.setText(`Health: ${health}`)
     }
     if (health <= 0){
-        game.destroy()
+        player.visible=false
+        this.physics.pause()
+        gameOver.visible=true
+        text2.setText(`Health: 0`)
+
     }
 }
 
 function update ()
 {
-    this.physics.add.collider(Zombie, player)
-
     zombies.children.each(child => {
         this.physics.moveToObject(child, player, 120)
         child.rotation = Phaser.Math.Angle.BetweenPoints(child, player)
@@ -209,7 +206,6 @@ function update ()
     angle = Phaser.Math.Angle.Between(player.x, player.y, this.input.mousePointer.worldX, this.input.mousePointer.worldY)
     player.rotation = angle;
 
-    let gameover = this.physics.add.collider(player.x,player.y,'fail')
     if (cursors.left.isDown) {
         player.setVelocityX(-160);
     } else if (cursors.right.isDown) {
