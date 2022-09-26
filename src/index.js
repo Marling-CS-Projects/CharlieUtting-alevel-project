@@ -133,7 +133,7 @@ function create () {
 
     worldLayer.setCollisionByProperty({collides: true});
 
-    // this.physics.add.collider(worldLayer, player);
+    this.physics.add.collider(worldLayer, player);
 
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     player.body.collideWorldBounds = true;
@@ -144,26 +144,26 @@ function create () {
     zombies = this.physics.add.group({
         runChildUpdate: true
     })
-    // for (let i = 0; i < 5; i++) {
-    //     zombie = new Zombie(this, Phaser.Math.Between(1608, 1786), Phaser.Math.Between(0, 1784), 'zombieImg')
-    //     zombies.add(zombie)
-    // }
-    // for (let i = 0; i < 11; i++) {
-    //     zombie = new Zombie(this, Phaser.Math.Between(1320, 1560), Phaser.Math.Between(0, 1784), 'zombieImg')
-    //     zombies.add(zombie)
-    // }
-    // for (let i = 0; i < 16; i++) {
-    //     zombie = new Zombie(this, Phaser.Math.Between(968, 1272), Phaser.Math.Between(0, 1784), 'zombieImg')
-    //     zombies.add(zombie)
-    // }
-    // for (let i = 0; i < 25; i++) {
-    //     zombie = new Zombie(this, Phaser.Math.Between(424, 888), Phaser.Math.Between(0, 1784), 'zombieImg')
-    //     zombies.add(zombie)
-    // }
-    // for (let i = 0; i < 30; i++) {
-    //     zombie = new Zombie(this, Phaser.Math.Between(8, 376), Phaser.Math.Between(0, 1784), 'zombieImg')
-    //     zombies.add(zombie)
-    // }
+    for (let i = 0; i < 5; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(1608, 1786), Phaser.Math.Between(0, 1784), 'zombieImg')
+        zombies.add(zombie)
+    }
+    for (let i = 0; i < 11; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(1320, 1560), Phaser.Math.Between(0, 1784), 'zombieImg')
+        zombies.add(zombie)
+    }
+    for (let i = 0; i < 16; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(968, 1272), Phaser.Math.Between(0, 1784), 'zombieImg')
+        zombies.add(zombie)
+    }
+    for (let i = 0; i < 25; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(424, 888), Phaser.Math.Between(0, 1784), 'zombieImg')
+        zombies.add(zombie)
+    }
+    for (let i = 0; i < 30; i++) {
+        zombie = new Zombie(this, Phaser.Math.Between(8, 376), Phaser.Math.Between(0, 1784), 'zombieImg')
+        zombies.add(zombie)
+    }
     this.physics.add.collider(zombies, player, takeDamage, null, this)
 
     zombies.children.each(child => {
@@ -185,7 +185,7 @@ function collectIron(player, iron){
         delay = (delay/3)*2
     }
 
-    if(i == 0){
+    if(i == 5){
         boss = new Zombie(this, 32, 1722, 'zombieImg')
         boss.setScale(4,4)
         boss.h = 10000
