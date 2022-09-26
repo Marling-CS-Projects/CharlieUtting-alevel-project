@@ -8,8 +8,8 @@ import bulImg from './assets/bullet.png'
 import font from './assets/arcade.png'
 import fontxml from './assets/arcade.xml'
 
-let ironGoal = 8;
-const ironGoals = [8,12,15,16,25,0];
+let ironGoal = 6;
+const ironGoals = [6,12,15,16,25,0];
 let i = 0;
 let damage = 20;
 let zomDam = 3
@@ -32,6 +32,7 @@ let zombies;
 let text2;
 let boss;
 let gameOver;
+let speed = 120
 
 const config = {
     type: Phaser.AUTO,
@@ -95,8 +96,8 @@ function create () {
     belowLayer = map.createLayer("Lower", tileset, 0, 0);
     worldLayer = map.createLayer("World", tileset, 0, 0);
 
-    // player = this.physics.add.sprite(1608,1080,'person')
-    player = this.physics.add.sprite(140,1506,'person')
+    player = this.physics.add.sprite(1608,1080,'person')
+    // player = this.physics.add.sprite(140,1506,'person')
 
 
     cursors = this.input.keyboard.createCursorKeys();
@@ -123,7 +124,7 @@ function create () {
     text2 = this.add.bitmapText(20, 20, 'arcade', `Health: ${health}`,15)
     text2.setScrollFactor(0);
 
-    gameOver = this.add.bitmapText(320, 240, 'arcade', 'Game Over', 50)
+    gameOver = this.add.bitmapText(320, 240, 'arcade', `Game Over`, 50)
     gameOver.setScrollFactor(0)
     gameOver.setOrigin(0.5)
     gameOver.visible=false
@@ -132,7 +133,7 @@ function create () {
 
     worldLayer.setCollisionByProperty({collides: true});
 
-    this.physics.add.collider(worldLayer, player);
+    // this.physics.add.collider(worldLayer, player);
 
     this.physics.world.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
     player.body.collideWorldBounds = true;
@@ -143,26 +144,26 @@ function create () {
     zombies = this.physics.add.group({
         runChildUpdate: true
     })
-    for (let i = 0; i < 5; i++) {
-        zombie = new Zombie(this, Phaser.Math.Between(1608, 1786), Phaser.Math.Between(0, 1784), 'zombieImg')
-        zombies.add(zombie)
-    }
-    for (let i = 0; i < 11; i++) {
-        zombie = new Zombie(this, Phaser.Math.Between(1320, 1560), Phaser.Math.Between(0, 1784), 'zombieImg')
-        zombies.add(zombie)
-    }
-    for (let i = 0; i < 16; i++) {
-        zombie = new Zombie(this, Phaser.Math.Between(968, 1272), Phaser.Math.Between(0, 1784), 'zombieImg')
-        zombies.add(zombie)
-    }
-    for (let i = 0; i < 25; i++) {
-        zombie = new Zombie(this, Phaser.Math.Between(424, 888), Phaser.Math.Between(0, 1784), 'zombieImg')
-        zombies.add(zombie)
-    }
-    for (let i = 0; i < 30; i++) {
-        zombie = new Zombie(this, Phaser.Math.Between(8, 376), Phaser.Math.Between(0, 1784), 'zombieImg')
-        zombies.add(zombie)
-    }
+    // for (let i = 0; i < 5; i++) {
+    //     zombie = new Zombie(this, Phaser.Math.Between(1608, 1786), Phaser.Math.Between(0, 1784), 'zombieImg')
+    //     zombies.add(zombie)
+    // }
+    // for (let i = 0; i < 11; i++) {
+    //     zombie = new Zombie(this, Phaser.Math.Between(1320, 1560), Phaser.Math.Between(0, 1784), 'zombieImg')
+    //     zombies.add(zombie)
+    // }
+    // for (let i = 0; i < 16; i++) {
+    //     zombie = new Zombie(this, Phaser.Math.Between(968, 1272), Phaser.Math.Between(0, 1784), 'zombieImg')
+    //     zombies.add(zombie)
+    // }
+    // for (let i = 0; i < 25; i++) {
+    //     zombie = new Zombie(this, Phaser.Math.Between(424, 888), Phaser.Math.Between(0, 1784), 'zombieImg')
+    //     zombies.add(zombie)
+    // }
+    // for (let i = 0; i < 30; i++) {
+    //     zombie = new Zombie(this, Phaser.Math.Between(8, 376), Phaser.Math.Between(0, 1784), 'zombieImg')
+    //     zombies.add(zombie)
+    // }
     this.physics.add.collider(zombies, player, takeDamage, null, this)
 
     zombies.children.each(child => {
@@ -184,15 +185,16 @@ function collectIron(player, iron){
         delay = (delay/3)*2
     }
 
-    if(i == 1){
+    if(i == 0){
         boss = new Zombie(this, 32, 1722, 'zombieImg')
         boss.setScale(4,4)
         boss.h = 10000
-        this.physics.add.collider(boss, player)
         zombies.add(boss)
         zomDam = 20
+        health = 120
+        speed = 90
     }
-    text.setText(`Iron: ${ironCount}/ ${ironGoal}`);
+    text.setText(`Iron: ${ironCount} out of ${ironGoal}`);
 }
 
 function zomDie(bullet,zombie){
@@ -224,7 +226,7 @@ function takeDamage(player, zombie) {
 function update ()
 {
     zombies.children.each(child => {
-        this.physics.moveToObject(child, player, 120)
+        this.physics.moveToObject(child, player, speed)
         child.rotation = Phaser.Math.Angle.BetweenPoints(child, player)
     })
 
