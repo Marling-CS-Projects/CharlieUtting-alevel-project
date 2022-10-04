@@ -32,7 +32,7 @@ let zombies;
 let text2;
 let boss;
 let gameOver;
-let speed = 120
+let tutorial;
 
 const config = {
     type: Phaser.AUTO,
@@ -43,7 +43,7 @@ const config = {
         default: 'arcade',
         arcade: {
             gravity: { y: 0 },
-            debug: true
+            debug: false
         }
     },
     scene: {
@@ -97,7 +97,7 @@ function create () {
     worldLayer = map.createLayer("World", tileset, 0, 0);
 
     player = this.physics.add.sprite(1608,1080,'person')
-    // player = this.physics.add.sprite(140,1506,'person')
+
 
 
     cursors = this.input.keyboard.createCursorKeys();
@@ -128,6 +128,15 @@ function create () {
     gameOver.setScrollFactor(0)
     gameOver.setOrigin(0.5)
     gameOver.visible=false
+
+    // tutorial = this.add.bitmapText(320, 240,'arcade', `Use the Arrow keys to move.\n Collect the iron.\nUse the mouse to aim and shoot.\nWhen you get the amount of iron in the corner of your screen then you gun will upgrade.\n Your aim is to collect all of the iron in the map`,15)
+    tutorial = this.add.text(320, 110, `Use the Arrow keys to move.\nCollect the iron.\nUse the mouse to aim and shoot.\nIf you get the amount of iron in the top corner then it will upgrade your weapon.\nYour aim is to collect all of the iron in the map`, {
+        fontSize: '13px',
+        fill: '#ffffff'
+    });
+
+    tutorial.setScrollFactor(0);
+    tutorial.setOrigin(0.5)
 
     this.physics.add.collider(player, iron, collectIron, null, this)
 
@@ -188,11 +197,11 @@ function collectIron(player, iron){
     if(i == 5){
         boss = new Zombie(this, 32, 1722, 'zombieImg')
         boss.setScale(4,4)
-        boss.h = 10000
+        boss.h = 100000
         zombies.add(boss)
         zomDam = 20
         health = 120
-        speed = 90
+        text2.setText(`Health: ${health}`)
     }
     text.setText(`Iron: ${ironCount} out of ${ironGoal}`);
 }
@@ -225,8 +234,10 @@ function takeDamage(player, zombie) {
 
 function update ()
 {
+    tutorial.Visible = true
+    this.time.delayedCall(10000, function tut(){tutorial.visible = false})
     zombies.children.each(child => {
-        this.physics.moveToObject(child, player, speed)
+        this.physics.moveToObject(child, player, 120)
         child.rotation = Phaser.Math.Angle.BetweenPoints(child, player)
     })
 
