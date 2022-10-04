@@ -18,6 +18,8 @@
 
 ### Usability Features
 
+* Controls - They should be easy to pick up and remember.&#x20;
+
 ### Key Variables
 
 | Variable Name | Use                                                                    |
