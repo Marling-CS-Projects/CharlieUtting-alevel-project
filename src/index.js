@@ -129,7 +129,6 @@ function create () {
     gameOver.setOrigin(0.5)
     gameOver.visible=false
 
-    // tutorial = this.add.bitmapText(320, 240,'arcade', `Use the Arrow keys to move.\n Collect the iron.\nUse the mouse to aim and shoot.\nWhen you get the amount of iron in the corner of your screen then you gun will upgrade.\n Your aim is to collect all of the iron in the map`,15)
     tutorial = this.add.text(320, 110, `Use the Arrow keys to move.\nCollect the iron.\nUse the mouse to aim and shoot.\nIf you get the amount of iron in the top corner then it will upgrade your weapon.\nYour aim is to collect all of the iron in the map`, {
         fontSize: '13px',
         fill: '#ffffff'
@@ -234,7 +233,6 @@ function takeDamage(player, zombie) {
 
 function update ()
 {
-    tutorial.Visible = true
     this.time.delayedCall(10000, function tut(){tutorial.visible = false})
     zombies.children.each(child => {
         this.physics.moveToObject(child, player, 120)
