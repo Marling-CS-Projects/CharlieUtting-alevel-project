@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Zombie Survival Game https://docs.google.com/forms/d/e/1FAIpQLSfsUxtRfRm6At8HDYSpT\_ZtFFlsZr1NJW7Eymg](README.md)
+* [Zombie Survival Game https://forms.gle/cpt4WrDFvH5aAREB7](README.md)
 
 ## 1 Analysis <a href="#analysis" id="analysis"></a>
 
