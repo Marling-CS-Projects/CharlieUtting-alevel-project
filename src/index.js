@@ -7,6 +7,7 @@ import zomImg from './assets/zombie.png'
 import bulImg from './assets/bullet.png'
 import font from './assets/arcade.png'
 import fontxml from './assets/arcade.xml'
+import Stats from 'stats.js'
 
 let ironGoal = 6;
 const ironGoals = [6,12,15,16,25,0];
@@ -274,3 +275,21 @@ function update ()
         this.physics.add.collider(bullet, zombies, zomDie)
     }
 }
+
+const stats = new Stats();
+stats.showPanel( 1 ); // 0: fps, 1: ms, 2: mb, 3+: custom
+document.body.appendChild( stats.dom );
+
+function animate() {
+
+    stats.begin();
+
+    // monitored code goes here
+
+    stats.end();
+
+    requestAnimationFrame( animate );
+
+}
+
+requestAnimationFrame( animate );

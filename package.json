@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "mrpas": "^2.0.0",
-    "phaser": "^3.55.2"
+    "phaser": "^3.55.2",
+    "stats.js": "^0.17.0"
   }
 }
