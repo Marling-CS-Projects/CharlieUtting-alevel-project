@@ -53,12 +53,13 @@ The solution should have as few errors as possible and if one does occur, it sho
 
 ### Easy To Learn
 
-The solution should be easy to use and not be over complicated. To do this, I will create simple controls for the game. I will make sure that no more controls are added than are needed in order to keep them as simple as possible for the players.
+The solution should be simple and easy to pick up. I will need to create logical and simple controls which will make them easy to pick up. I will need to abstract my control system so that I only have ones that are essential like ones for movement.
 
 #### Aims
 
 * Create a list of controls for the game
 * Create an guide displayed in the game that helps players learn how to play the game
+* Have an abstracted control system with only essential controls in the game
 
 ## Pseudocode for the Game
 
@@ -81,9 +82,11 @@ render Game to HTML web page
 
 ### Pseudocode for the Map
 
-This shows the basic layout of code for a Phaser scene with . It shows where each task will be executed.
+This shows the basic layout of code for a Phaser scene with a map editor(Tiled). It shows where each task will be executed.
 
 ```
+import Tiled
+
 class Level extends Phaser Scene
 
     procedure preload
