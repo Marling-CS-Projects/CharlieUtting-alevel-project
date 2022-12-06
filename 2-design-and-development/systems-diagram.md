@@ -34,11 +34,12 @@ The goal of efficiency is to allow the player to complete the goals of the game 
 
 ### Engaging
 
-The solution is engaging for the user to use. To do this the game will primarily be difficult so the player will have more determination to finish it and it will have five roads that will act as levels and will have a clear difficultly increase. The game will also be more engaging if it has a darker theme as this will increase the fear and adrenaline of the person playing.
+The solution is engaging for the user to use. To do this the game will primarily be difficult so the player will have more determination to finish it and it will have five roads that will act as levels and will have a clear difficultly increase. The difficulty will be the boundary of the game so that the player should not be physically restricted from skipping content but they will not be able to skip it as they are unprepared and under-skilled to go through. The map should also promote some level of exploration which will make the game less repetitive. The game will also be more engaging if it has a darker theme as this will increase the fear and adrenaline of the person playing.
 
 #### Aims
 
 * Create a series of roads that will act as levels to work through
+* Use difficulty as the game boundaries
 * Incorporate a style of game art the suits the theme of the game
 
 ### Error Tolerant
@@ -57,7 +58,7 @@ The solution should be easy to use and not be over complicated. To do this, I wi
 #### Aims
 
 * Create a list of controls for the game
-* Create an in-level guide that helps players learn how to play the game
+* Create an guide displayed in the game that helps players learn how to play the game
 
 ## Pseudocode for the Game
 
