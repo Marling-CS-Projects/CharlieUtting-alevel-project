@@ -4,7 +4,7 @@
 
 &#x20;
 
-<figure><img src="../.gitbook/assets/Untitled (1) (1).jpg" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
 
 This diagram shows the different parts of the game that I will focus on creating. I have split each section into smaller sub-sections. Throughout the development stage, I will pick one or two of these sections to focus on at a time to gradually build up and piece together the game. I have broken the project down this way as it roughly corresponds to the success criteria.
 
@@ -78,33 +78,34 @@ end object
 render Game to HTML web page
 ```
 
-### Pseudocode for a level
+### Pseudocode for the Map
 
-This shows the basic layout of code for a Phaser scene. It shows where each task will be executed.
+This shows the basic layout of code for a Phaser scene with . It shows where each task will be executed.
 
 ```
 class Level extends Phaser Scene
 
     procedure preload
-        load all sprites and music
+        load all sprites and layers
     end procedure
     
     procedure create
-        start music
-        draw background
         create players
-        create platforms
-        create puzzle elements
-        create enemies
-        create obstacles
-        create finishing position
+        create belowLayer
+        create worldLayer
+        create zombies
+        create colliders
+        create items
         create key bindings
+    end procedure
+    
+    procedure colliders
+        update sprite or item
     end procedure
     
     procedure update
         handle key presses
         move player
-        move interactable objects
         update animations
         check if player at exit
     end procedure
