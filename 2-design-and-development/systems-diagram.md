@@ -4,7 +4,7 @@
 
 &#x20;
 
-<figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 This diagram shows the different parts of the game that I will focus on creating. I have split each section into smaller sub-sections. Throughout the development stage, I will pick one or two of these sections to focus on at a time to gradually build up and piece together the game. I have broken the project down this way as it roughly corresponds to the success criteria.
 
@@ -24,7 +24,7 @@ For my game to be affective the game needs to be simple but with some level of d
 
 ### Efficiency
 
-The speed and accuracy to which a user can complete the goal. To do this I will both have an easy menu to save a game and to load a game and I will need an intuitive control system so that the game is easy to pick up and understand what your objectives are.
+The goal of efficiency is to allow the player to complete the goals of the game as quickly and accurately as possible. To do this I will need a menu and saving system that is easy to navigate and easy to use. Also the controls need to be simple but effective and the goal of the game needs to be outlined from the start.
 
 #### Aims
 
